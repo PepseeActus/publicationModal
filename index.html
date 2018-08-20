@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Orange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <!--ANIMATION CSS-->
+    <link rel="stylesheet" href="css/animate.css">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="text/javascript">
+      function rotateCard(btn){
+          var $card = $(btn).closest('.modal-flip');
+          console.log($card);
+          if($card.hasClass('hover')){
+              $card.removeClass('hover');
+          } else {
+              $card.addClass('hover');
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav id="headermenu" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler custom-toggler" aria-controls="topheader" aria-expanded="false" aria-label="Menu" data-target="#topheader" data-toggle="collapse" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="topheader" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-expanded="false" aria-label="Accueil" href="#" role="button">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-expanded="false" aria-label="Annuaire" href="#" role="button">Annuaire</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-expanded="false" aria-label="Vie associative" href="#" role="button">Vie associative</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-expanded="false" aria-label="Académie du bénévolat" href="#" role="button">Académie du bénévolat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-expanded="false" aria-label="Contact" href="#" role="button">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle dropdown-menu-right" href="#" role="button" ata-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">J'accède à mon espace</a>
+                <a class="dropdown-item" href="#">Je modifie mon profil</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row d-flex">
+          <div class="col-12 col-md-6 header-img">
+          </div>
+          <div class="col-12 col-md-6 header-cta text-center text-md-left py-5 px-md-5">
+            <div class="d-flex h-100">
+              <div class="col align-self-center justify-content-center justify-content-md-start">
+                <h1>Académie du Bénévolat</h1>
+                <p>Avec l’Académie du Bénévolat, la Métropole Nice Côte d’Azur, en collaboration avec la startup citoyenne Hacktiv, propose aux associations ou organismes de faire connaître leurs besoins et aux citoyens de s’engager pour des missions de bénévolat selon leur géolocalisation, leurs centres d'intérêts et leurs disponibilités. En quelques clics, chacun peut s’engager auprès d’associations ou lors d’événements municipaux et participer à la co-construction de la ville de demain !</p>
+                <a class="btn btn-action cta mx-sm-1 mb-2" href="#">VOIR TOUTES LES MISSIONS !</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="section-filtre" id="search-wrapper">
+      <div class="container-fluid text-center">
+        <h2 style="display: block;">Carte interactive</h2>
+        <p class="long-copy lead">Découvrez les missions près de chez vous</p>
+        <div class="row justify-content-center">
+          <form class='form-inline' id='organization-search'>
+            <div class="form-group mb-2 col-sm-12 col-md-6 col-lg-2">
+              <div class="icon-addon addon-md">
+                <select class='form-control'>
+                  <option>Commune</option>
+                </select>
+                <label class="fa fa-map-marker" for="search_address" title="Localisation"></label>
+              </div>
+            </div>
+            <div class="form-group mb-2 col-sm-12 col-md-6 col-lg-2">
+              <div class="icon-addon addon-md">
+                <input class="form-control daterange" placeholder="Date / période" value="" name="search[date_range]" id="search_date_range" type="text">
+                <label class="fa fa-calendar" for="search_date_range" title="Période"></label>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-12 form-group mb-2">
+              <select class="form-control" name="search[category_id]" id="search_category_id">
+                <option value="">Thématique</option>
+              </select>
+            </div>
+            <div class="form-group mb-2 col-sm-12 col-md-6 col-lg-2">
+              <div class="icon-addon addon-md">
+                <input class='form-control' placeholder='Mot clé'>
+                <label class="fa fa-search" for="search_full_text_search" title="Mot clé"></label>
+              </div>
+            </div>
+            <div class="submit mb-2 col-6 col-sm-6 col-md-3 col-lg-2">
+              <button class="btn btn-action submit" type="submit" id='search_submit_btn'>
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="reset mb-2 col-6 col-sm-6 col-md-3 col-lg-2">
+              <button class="btn btn-action reset" type="reset" id='reset_button' value="Effacer">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="m-1">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Nouveaul Modal</button>
+          <!-- Modal -->
+          <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-0 p-2 modal-leg">
+                  <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                  </button>
+                  <div>
+                    <i class="fas fa-thumbtack"></i>
+                    <span class="font-weight-light pl-1">Mission ponctuelle</span>
+                  </div>
+                  <div>
+                    <a href="#"><i class="fab fa-facebook px-1 text-dark"></i></a>
+                    <a href="#"><i class="fab fa-twitter px-1 text-dark"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g px-1 text-dark"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp px-1 text-dark"></i></a>
+                  </div>
+                </div>
+                <div class="modal-body p-0">
+                  <div class="row m-0">
+                    <div class="col img-modal"></div>
+                    <div class="col header-cta d-flex flex-column py-3">
+                      <div class="ml-4"><img src="img/logo.png" class="modal-logo rounded-circle bg-white" alt="logo" style="max-width: 30px;"><span class="pl-2">Association Ville de Nice</span></div>
+                      <h5 class="modal-title ml-4">Coupe du monde de paintball</h5>
+                      <div class="ml-4 py-2">
+                        <!--<i class="fa fa-info ml-1 city-color"></i>-->
+                        <span class="font-weight-light pl-2">Activité sportive</span>
+                      </div>
+                      <a href="#" class="btn btn-rounded btn-hacktiv btn-plain btn-sm d-block btn-title">Je participe !</a>
+                    </div>
+                  </div>
+                  <div class="row py-3 px-4">
+                    <div class="info-pratique col-12 col-md-6" style="line-height:25px;">
+                      <div class="mb-3">
+                        <span class="font-weight-bold">Où ?</span>
+                        <div>
+                          <i class="fa fa-map-pin ml-1"></i>
+                          <span class="font-weight-light pl-2">230 Avenue de Fabron, 06200 Nice, France</span>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <span class="font-weight-bold">Quand ?</span>
+                        <div>
+                          <i class="far fa-calendar-alt"></i>
+                          <span class="font-weight-light pl-2">Du 27 juin 2018 au 27 septembre 2018</span>
+                        </div>
+                        <div>
+                          <i class="far fa-clock"></i>
+                          <span class="font-weight-light pl-2">De 10h à 17h</span>
+                        </div>
+                      </div>
+                      <div>
+                        <span class="font-weight-bold">Avec qui ?</span>
+                        <div>
+                          <i class="fa fa-user"></i>
+                          <span class="font-weight-light pl-2">Bénévoles: 0 / 2300</span>
+                        </div>
+                        <div>
+                          <i class="fas fa-search"></i>
+                          <a href="#" class="text-dark"><span class="font-weight-light pl-2">Voir les participants</span></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="votre-mission col-12 col-md-6 border-left">
+                      <h6 class="ml-4">Votre mission !</h6>
+                      <p class="font-weight-light" style="text-indent:25px;">Vous y êtes… Vous avancez prudemment dans la forêt avec votre équipement paintball. Autour de vous, entre les arbres, vous distinguez difficilement une ruine, un peu plus loin, en contrebas un bunker se profile, bien dissimulé par le relief et la végétation. Là, devant-vous, une ombre à bougé ! Vous vous immobilisez derrière le premier abri venu et mille questions vous traversent l’esprit. Ce bosquet là-bas n’abrite-t-il pas un nid de mitrailleus</p>
+                    </div>
+                  </div>
+                  <div class="description-association modal-leg p-2">
+                    <div class="float-left">
+                      <img src="img/logo.png" class="modal-logo rounded-circle m-3 bg-white" alt="logo">
+                      <div class="text-center">
+                        <a href="#"><i class="fas fa-globe text-muted rounded-circle bg-white"></i></a>
+                        <a href="#"><i class="fab fa-twitter text-muted mx-1 rounded-circle bg-white"></i></a>
+                        <a href="#"><i class="fab fa-facebook text-muted rounded-circle bg-white"></i></a>
+                      </div>
+                    </div>
+                    <h6>Association Ville de Nice</h6>
+                    <p class="font-weight-light mb-1">Nice est la capitale du département des Alpes-Maritimes sur la Côte d'Azur. Elle est située sur le littoral de galets de la baie des Anges. Fondée par les Grecs puis prisée par l'élite européenne au XIXe siècle, la ville attire l'attention des artistes depuis longtemps. Le musée Henri Matisse est consacré au parcours artistique du peintre niçois. Le musée Marc Chagall abrite certaines des plus grandes œuvres religieuses de l'artiste auquel il doit son nom.<a href="#" class="text-dark"><i class="fas fa-arrow-circle-right"></i> Voir toutes les missions de l'association</a></p>
+                  </div>
+                </div>
+                <div class="modal-footer header-cta p-1">
+                  <a href="#" class="m-auto text-white">Signaler un problème sur cette publication!</a>
+                  <button type="button" class="btn btn-secondary d-none" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="search_notices" class="pt-4">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9505412679514!2d2.36800571584383!3d48.85915350860673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66dfef6f69ed1%3A0xf55b37e37a9a2fd4!2sRue+Nicolas+Appert%2C+75011+Paris!5e0!3m2!1sfr!2sfr!4v1531477201296" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <footer class="bg-dark">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-3 text-center">
+            <img src="img/orange_logo.png" alt="#" class="d-block">
+            <a href="#"><i class="fab fa-facebook-f text-white"></i></a>
+            <a href="#"><i class="fab fa-twitter text-white"></i></a>
+          </div>
+          <div class="col-12 col-md-3">
+            <h3>Accès directs</h3>
+            <ul>
+              <li><a href='/' class="text-white">Accueil</a></li>
+              <li><a href='#' class="text-white">Charte éthique</a></li>
+              <li><a href='#' class="text-white">Mentions légales</a></li>
+              <li><a href='#' class="text-white">CGU</a></li>
+              <li><a href='#' class="text-white">FAQ</a></li>
+            </ul>
+          </div>
+          <div class='col-12 col-md-3'>
+            <h3>Agir maintenant !</h3>
+            <ul>
+              <li><a href='#' class="text-white">Carte des missions</a></li>
+              <li><a href='#' class="text-white">Créer un compte entreprise</a></li>
+              <li><a href='#' class="text-white">Créer un compte acteur public</a></li>
+              <li><a href='#' class="text-white">Créer un compte association</a></li>
+              <li><a href='#' class="text-white">Créer un compte citoyen</a></li>
+              <li><a href='#' class="text-white">Poser une question</a></li>
+            </ul>
+          </div>
+          <div class='col-12 col-md-3'>
+            <h3>Je M'Hacktiv !</h3>
+            <a href="#"><i class="fab fa-facebook-f text-white"></i></a>
+            <a href="#"><i class="fab fa-twitter text-white"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </body>
+</html>
